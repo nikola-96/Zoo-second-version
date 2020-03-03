@@ -11,6 +11,7 @@
         <td>{{ animal.name }}</td>
         <td>{{isTheyHaveBirdht( animal.date_of_birth )}}</td>
         <button @click="remove(animal)">Remove</button>
+        <button @click="moveToTop(animal)">Move To Top</button>
       </tr>
     </table>
   </div>
@@ -40,6 +41,10 @@ export default {
     remove(animal) {
       let index = this.animals.indexOf(animal);
       this.animals.splice(index, 1);
+    },
+    moveToTop(animal) {
+      this.remove(animal);
+      this.animals.unshift(animal);
     }
   }
 };
