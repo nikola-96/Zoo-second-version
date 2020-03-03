@@ -10,6 +10,7 @@
         <td>{{ animal.species }}</td>
         <td>{{ animal.name }}</td>
         <td>{{isTheyHaveBirdht( animal.date_of_birth )}}</td>
+        <button @click="remove(animal)">Remove</button>
       </tr>
     </table>
   </div>
@@ -35,6 +36,10 @@ export default {
         return "nepoznat";
       }
       return date;
+    },
+    remove(animal) {
+      let index = this.animals.indexOf(animal);
+      this.animals.splice(index, 1);
     }
   }
 };
