@@ -38,6 +38,14 @@
         <button @click="moveToTop(animal)">Move To Top</button>
       </tr>
     </table>
+    <br />
+    <table>
+      <th>Evolution Species</th>
+      <tr v-for="species in list_evolution_species" :key="species">
+        <td>{{ species }}</td>
+        <button @click="showSpecies(species)">Show all</button>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -83,7 +91,14 @@ export default {
           date_of_birth: new Date()
         }
       ],
-      newAnimal: {}
+      newAnimal: {},
+      list_evolution_species: [
+        "Invertebrates",
+        "Amphibians",
+        "Reptiles",
+        "Birds",
+        "Mammals"
+      ]
     };
   },
   methods: {
@@ -104,6 +119,15 @@ export default {
     addAnimal() {
       this.animals.push(this.newAnimal);
       this.newAnimal = {};
+    },
+    showSpecies(species) {
+      let animalSpecies = [];
+      this.animals.forEach(animal => {
+        if (animal.evolution_species == species) {
+          animalSpecies.push(animal.name);
+        }
+      });
+      alert(animalSpecies);
     }
   }
 };
