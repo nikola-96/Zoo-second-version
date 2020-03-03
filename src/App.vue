@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <AnimalList />
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col>
+          <AnimalList />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
