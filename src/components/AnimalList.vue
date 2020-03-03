@@ -1,15 +1,23 @@
 <template>
   <div>
-    <h2>HTML Table</h2>
+    <h2>Animal list</h2>
     <form @submit.prevent="addAnimal">
       <div>
-        <h3>Add new animal</h3>
-        <label for>Species</label>
+        <p>Add new animal</p>
+        <label for>Species:</label>
         <input type="text" name="species" v-model="newAnimal.species" /> &nbsp;
-        <label for>Name</label>
+        <label for>Name:</label>
         <input type="text" name="name" v-model="newAnimal.name" /> &nbsp;
-        <label for>Date of Birth</label>
+        <label for>Date of Birth:</label>
         <input type="text" name="date_of_birth" v-model="newAnimal.date_of_birth" />
+        <label for="cars">Select species:</label> &nbsp;
+        <select v-model="newAnimal.evolution_species">
+          <option value="Invertebrates">Invertebrates</option>
+          <option value="Amphibians">Amphibians</option>
+          <option value="Reptiles">Reptiles</option>
+          <option value="Birds">Birds</option>
+          <option value="Mammals">Mammals</option>
+        </select>
         <br />
         <button type="submit">Add new animal</button>
       </div>
@@ -17,10 +25,12 @@
     <br />
 
     <table class="container">
+      <th>Evolution Species</th>
       <th>Species</th>
       <th>Name</th>
       <th>Date of Birth</th>
       <tr v-for="animal in animals" :key="animal.name">
+        <td>{{ animal.evolution_species }}</td>
         <td>{{ animal.species }}</td>
         <td>{{ animal.name }}</td>
         <td>{{isTheyHaveBirdht( animal.date_of_birth )}}</td>
@@ -36,12 +46,42 @@ export default {
   data() {
     return {
       animals: [
-        { species: "dog", name: "Pera", date_of_birth: null },
-        { species: "dog", name: "Gojko", date_of_birth: null },
-        { species: "cat", name: "Milunka", date_of_birth: new Date() },
-        { species: "cat", name: "Zile", date_of_birth: new Date() },
-        { species: "cat", name: "Mile", date_of_birth: new Date() },
-        { species: "bird", name: "Joca", date_of_birth: new Date() }
+        {
+          evolution_species: "Mammals",
+          species: "Dog",
+          name: "Stella",
+          date_of_birth: null
+        },
+        {
+          evolution_species: "Mammals",
+          species: "Dog",
+          name: "Gojko",
+          date_of_birth: null
+        },
+        {
+          evolution_species: "Mammals",
+          species: "Cat",
+          name: "Mila",
+          date_of_birth: new Date()
+        },
+        {
+          evolution_species: "Mammals",
+          species: "Cat",
+          name: "Zile",
+          date_of_birth: new Date()
+        },
+        {
+          evolution_species: "Mammals",
+          species: "Cat",
+          name: "Mile",
+          date_of_birth: new Date()
+        },
+        {
+          evolution_species: "Mammals",
+          species: "Bird",
+          name: "Joca",
+          date_of_birth: new Date()
+        }
       ],
       newAnimal: {}
     };
