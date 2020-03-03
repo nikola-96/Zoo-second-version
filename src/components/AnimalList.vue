@@ -1,6 +1,20 @@
 <template>
   <div>
     <h2>HTML Table</h2>
+    <form @submit.prevent="addAnimal">
+      <div>
+        <h3>Add new animal</h3>
+        <label for>Species</label>
+        <input type="text" name="species" v-model="newAnimal.species" /> &nbsp;
+        <label for>Name</label>
+        <input type="text" name="name" v-model="newAnimal.name" /> &nbsp;
+        <label for>Date of Birth</label>
+        <input type="text" name="date_of_birth" v-model="newAnimal.date_of_birth" />
+        <br />
+        <button type="submit">Add new animal</button>
+      </div>
+    </form>
+    <br />
 
     <table class="container">
       <th>Species</th>
@@ -28,7 +42,8 @@ export default {
         { species: "cat", name: "Zile", date_of_birth: new Date() },
         { species: "cat", name: "Mile", date_of_birth: new Date() },
         { species: "bird", name: "Joca", date_of_birth: new Date() }
-      ]
+      ],
+      newAnimal: {}
     };
   },
   methods: {
@@ -45,6 +60,10 @@ export default {
     moveToTop(animal) {
       this.remove(animal);
       this.animals.unshift(animal);
+    },
+    addAnimal() {
+      this.animals.push(this.newAnimal);
+      this.newAnimal = {};
     }
   }
 };
